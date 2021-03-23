@@ -9,7 +9,6 @@ exports.signupController = async (req, res) => {
         if (user ) {
             return res.status(400).json({
                 errorMessage: 'Email already exists',
-
             });
 
         }
