@@ -7,24 +7,24 @@ import isEmpty from 'validator/lib/isEmpty';
 import equals from 'validator/lib/equals';
 import {showErrorMsg, showSuccessMsg} from '../helpers/message';
 import {showLoading} from '../helpers/loading';
-
+import {signup} from '../api/auth';
 
 
 const Signup = () => {
-     {/* setFormData c la méthode utilisée pour faire les changements des données for our component state
-    formData : objets contenant les données username,email... */ }
+     //setFormData c la méthode utilisée pour faire les changements des données for our component state
+     //formData : objets contenant les données username,email... 
     const[formData, setFormData] = useState(  {
         username : 'ikram',
         email : 'ikrambs@gmail.com',
-        password : '123',
-        password2 : '123',
+        password : '123111',
+        password2 : '123111',
         successMsg: false,
         errorMsg :false,
         loading : false
 
     })
 
-    {/*distructure state */}
+    //distructure state 
     const {
         username,
         email,
@@ -52,29 +52,43 @@ const Signup = () => {
     const handleSubmit = (evt) =>{
         evt.preventDefault();
 
-    //client-side validation
-    if (isEmpty(username) || isEmpty(email) || isEmpty(password) || isEmpty(password2) ){
-        setFormData({
-            ...formData, errorMsg: 'All fields are required'
-        });    
-    } else if (!isEmail(email)){
-        setFormData({
-            ...formData, errorMsg: 'Invalid email'
-        });
-    }else if(!equals(password,password2)) {
-        setFormData({
-            ...formData, errorMsg: 'Passwords do not match'
-        });
-    }else {
-        const { username, email, password } = formData; //from formData we need username, email,password
-        const data = { username, email, password };  //store the object in variable called data
-        
-        
-        setFormData({...formData, loading : true});
-        signup(data)
-    }
-
-};
+        //client-side validation
+        if (isEmpty(username) || isEmpty(email) || isEmpty(password) || isEmpty(password2) ){
+            setFormData({
+                ...formData, errorMsg: 'All fields are required',
+            });    
+        } else if (!isEmail(email)){
+            setFormData({
+                ...formData, errorMsg: 'Invalid email',
+            });
+        }else if(!equals(password,password2)) {
+            setFormData({
+                ...formData, errorMsg: 'Passwords do not match',
+            });
+        }else {
+            const { username, email, password } = formData; //from formData we need username, email,password
+            const data = { username, email, password };  //store the object in variable called data
+            
+            
+            setFormData({...formData, loading : true});
+            signup(data)
+                .then((response) => {
+                    console.log('Axios signup success: ', response);
+                    setFormData({
+                        username: '',
+                        email: '',
+                        password: '',
+                        password2: '',
+                        loadind: false,
+                        successMsg: response.data.successMessage,
+                    });
+                })
+                .catch((err) => {
+                    console.log('Axios signup error: ' , err);
+                    setFormData({ ...formData, loading: false, errorMsg: err.response.data.errorMessage});
+                });
+        }
+    };
 
 /*******************************************
  *VIEWS
@@ -91,13 +105,9 @@ const Signup = () => {
                 <input
                     name='username'
                     value={username}
-                    className='form-controll'
+                    className='form-control'
                     placeholder='Username'
                     type='text'
-                    class='form-control'
-                    aria-describedby="basic-addon3"
-                   
-
                     onChange = {handleChange}    /* Listening for changes in input fields */  /* handleChange : ca veut dire, quand le user commence à taper */
                 />
                 </div>
