@@ -1,16 +1,24 @@
-import React, {useState} from 'react';
-import './signup.css';
-import {Link} from 'react-router-dom';
+import React, {useState,useEffect} from 'react';
+import {Link,  useHistory} from 'react-router-dom';
 //importation from the package validator what we need :
 import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
 import equals from 'validator/lib/equals';
+import {isAuthenticated} from '../helpers/auth';
 import {showErrorMsg, showSuccessMsg} from '../helpers/message';
 import {showLoading} from '../helpers/loading';
 import {signup} from '../api/auth';
 
 
 const Signup = () => {
+    let history = useHistory();
+    useEffect(() => {
+        if (isAuthenticated() && isAuthenticated().role === 1) {
+            history.push('/admin/dashboard');
+        } else if (isAuthenticated() && isAuthenticated().role === 0) {
+            history.push('/user/dashboard');
+        }
+    }, [history])
      //setFormData c la méthode utilisée pour faire les changements des données for our component state
      //formData : objets contenant les données username,email... 
     const[formData, setFormData] = useState(  {
@@ -20,9 +28,9 @@ const Signup = () => {
         password2 : '123111',
         successMsg: false,
         errorMsg :false,
-        loading : false
+        loading : false,
 
-    })
+    });
 
     //distructure state 
     const {
