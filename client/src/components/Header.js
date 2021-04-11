@@ -11,7 +11,7 @@ const Header = ({ history }) => {
     }
     //création des views
     const showNavigation = () => (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light ">        
+        <nav className="navbar navbar-expand-lg navbar-light ">        
                 <Link to='/' className="navbar-brand" > 
                     Logo
                 </Link>

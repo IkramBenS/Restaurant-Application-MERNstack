@@ -7,20 +7,21 @@ exports.signupController = async (req, res) => {
     const {username, email, password} = req.body;
 
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }); /////////////mail existant
         if (user ) {
             return res.status(400).json({
-                errorMessage: 'Email already exists',
+                errorMessage: 'Email already exists',  ////////display errorMsg
             });
 
         }
-        const newUser = new User();
+        const newUser = new User();    ////////si non creation nouveau user
         newUser.username = username;
         newUser.email = email;
 
         const salt = await bcrypt.genSalt(10);
-        newUser.password = await bcrypt.hash(password, salt); //that makes our pass much more secure
-        await newUser.save();
+        //// pr le pass on a utilisé la fct salt de la biblio bcrypt pour le hachage du password
+        newUser.password = await bcrypt.hash(password, salt); 
+        await newUser.save();  /////// sauvegarde dans la base de donnée
 
         res.json({
             successMessage : 'Registration success . Please signin.',
@@ -34,7 +35,7 @@ exports.signupController = async (req, res) => {
     }
 };
 
-
+/***************signin controller *********************/
 exports.signinController = async (req, res) => {
    const { email, password} =req.body;
 

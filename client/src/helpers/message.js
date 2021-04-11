@@ -1,6 +1,6 @@
 import React from 'react';
 
-/*we export this method to be able to import it in Signup */
+/*affichage du msg d'erreur : we export this method to be able to import it in Signup */
 export const showErrorMsg = (msg) => (
 <div className="alert alert-danger" role="alert">
   {msg}

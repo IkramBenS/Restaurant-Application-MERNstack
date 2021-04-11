@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start-server": "nodemon server.js",
+    "start-server": "nodemon server.js --ignore './client/'",
     "start-client": "npm start --prefix client",
     "dev": "concurrently \"npm run start-server\" \"npm run start-client\""
   },
@@ -13,12 +13,18 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.0",
-    "nodemon": "^2.0.7"
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7",
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",

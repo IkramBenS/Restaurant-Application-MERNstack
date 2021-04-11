@@ -23,7 +23,7 @@ const Signup = () => {
      //formData : objets contenant les données username,email... 
     const[formData, setFormData] = useState(  {
         username : 'ikram',
-        email : 'ikrambs@gmail.com',
+        email : 'ikrambenselma@gmail.com',
         password : '123111',
         password2 : '123111',
         successMsg: false,
@@ -73,6 +73,8 @@ const Signup = () => {
             setFormData({
                 ...formData, errorMsg: 'Passwords do not match',
             });
+        
+            //success
         }else {
             const { username, email, password } = formData; //from formData we need username, email,password
             const data = { username, email, password };  //store the object in variable called data

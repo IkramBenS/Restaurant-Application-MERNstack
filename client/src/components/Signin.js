@@ -139,7 +139,7 @@ const Signin = () => {
         </div>
 
         {/* already have account */}
-        <p className='text-center text-black'>
+        <p className='text-center text-white'>
             Don"t have an account? <Link to='/signup'>Register here</Link>
         </p>
 </form>
@@ -147,18 +147,17 @@ const Signin = () => {
 
 /********************************************* RENDER ********************************************/
 
-    return (
-        <div className='signin-container'>      
-            <div className='row px-3 vh-100'> {/* vh : view heigth pour rendre le background sur la totalité de la page */}
-                {/* align-self-center: bootstrap4 , c pour deplacer le bloc signup dans le centre*/}
-                <div className='col-md-4 mx-auto align-self-center'> 
-                    {errorMsg && showErrorMsg(errorMsg)} {/*if error msg is true then execute the methode showErrorMsg */}
-                    {loading && <div className='text-center'> {showLoading()}</div> } {/* if loading then show loading*/}
-                    {showSigninForm()}           
-                </div> 
-            </div>       
+    return (       
+        <div className='signin-container '> 
+            <div className="row register_forum">
+                <div className="col-6 forum_inputs " > 
+                    {errorMsg && showErrorMsg(errorMsg)} 
+                    {loading && <div className='text-center'> {showLoading()}</div> } 
+                    {showSigninForm()} 
+                </div>
+                <div className="col-6"> </div>
+            </div>  
         </div>
 );    
 };
-
 export default Signin;

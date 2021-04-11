@@ -11,8 +11,8 @@ import UserRoute from './UserRoute';
 import AdminRoute from './AdminRoute';
 import NotFound from './NotFound';
 
-
-const App = () => (
+const App = () => {
+  return(
       <BrowserRouter>
         <Header />
 
@@ -30,6 +30,7 @@ const App = () => (
         </main>
 
       </BrowserRouter>
-);
+  );
+};
 
 export default App;
