@@ -179,7 +179,7 @@ const Signup = () => {
                 </div>
 
                 {/* already have account */}
-                <p className='text-center text-white'>
+                <p className='text-center text-black'>
                     Have an account? <Link to='/signin'>Log In</Link>
                 </p>
         </form>
@@ -190,7 +190,7 @@ return (
     <div className='signup-container'>      
         <div className='row px-3 vh-100'> {/* vh : view heigth pour rendre le background sur la totalité de la page */}
             {/* align-self-center: bootstrap4 , c pour deplacer le bloc signup dans le centre*/}
-            <div className='col-md-5 mx-auto align-self-center'> 
+            <div className='forum_inputs-up col-md-4 mx-auto align-self-center'> 
                 {successMsg && showSuccessMsg(successMsg)}
                 {errorMsg && showErrorMsg(errorMsg)} {/*if error msg is true then execute the methode showErrorMsg */}
                 {loading && <div className='text-center'> {showLoading()}</div> } {/* if loading then show loading*/}

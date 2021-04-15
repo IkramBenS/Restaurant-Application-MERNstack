@@ -95,7 +95,7 @@ const Signin = () => {
  *VIEWS
  *******************************************/
  const showSigninForm = () => (
-    <form className='signup-form' onSubmit= {handleSubmit} noValidate>
+    <form className='signin-form' onSubmit= {handleSubmit} noValidate>
     {/* email */}
     <div className='form-group input-group'>
         <div className=' input-group-prepend'>
@@ -149,15 +149,19 @@ const Signin = () => {
 
     return (       
         <div className='signin-container '> 
-            <div className="row register_forum">
-                <div className="col-6 forum_inputs " > 
+            <div className='row px-2 vh-100'> 
+                <div className='forum_inputs-in'> 
+                        <p className='welcome'>
+                            WELCOME !
+                        </p>
                     {errorMsg && showErrorMsg(errorMsg)} 
                     {loading && <div className='text-center'> {showLoading()}</div> } 
-                    {showSigninForm()} 
-                </div>
-                <div className="col-6"> </div>
-            </div>  
-        </div>
-);    
+                    {showSigninForm()}
+            
+            </div> 
+        </div>       
+    </div>
+);
+
 };
 export default Signin;

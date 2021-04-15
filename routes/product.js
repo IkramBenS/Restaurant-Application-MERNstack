@@ -11,9 +11,7 @@ router.post(
 	productController.create
 );
 
-router.get(
-	'/',
-	productController.readAll
-);
+router.get('/', productController.readAll);
+router.delete('/:productId',autenticatateJWT, productController.delete);
 
 module.exports = router;
