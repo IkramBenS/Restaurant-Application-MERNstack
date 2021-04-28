@@ -45,20 +45,18 @@ const Signup = () => {
 /*******************************************
  *EVENT HANDLE 
  *******************************************/
-
-
     const handleChange = (evt) => {   
         setFormData({ /*we used setFormData to change the state*/
             ...formData, /* Current formData */
             [evt.target.name] : evt.target.value,
-            successMsg : '', //remove successMsg while writing
-            errorMsg : '', //remove errorMsg while writing
+            successMsg : '', /* remove successMsg while writing */
+            errorMsg : '', /* remove errorMsg while writing */
         });
     };
 
-        //this is where we gonna start making our http request,and take the info provided by the user , stored in the state to the server
+    //this is where we gonna start making our http request,and take the info provided by the user , stored in the state to the server
     const handleSubmit = (evt) =>{
-        evt.preventDefault();
+        evt.preventDefault(); /* validation par défaut du navigateur */
 
         //client-side validation
         if (isEmpty(username) || isEmpty(email) || isEmpty(password) || isEmpty(password2) ){
@@ -78,8 +76,7 @@ const Signup = () => {
         }else {
             const { username, email, password } = formData; //from formData we need username, email,password
             const data = { username, email, password };  //store the object in variable called data
-            
-            
+                        
             setFormData({...formData, loading : true});
             signup(data)
                 .then((response) => {

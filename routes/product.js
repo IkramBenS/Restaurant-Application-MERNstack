@@ -12,6 +12,13 @@ router.post(
 );
 
 router.get('/', productController.readAll);
+router.get('/:productId', productController.read);
+router.put(
+	'/:productId',
+	autenticatateJWT, 
+	upload.single('productImage'),
+	productController.update
+);
 router.delete('/:productId',autenticatateJWT, productController.delete);
 
 module.exports = router;

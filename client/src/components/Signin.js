@@ -152,7 +152,7 @@ const Signin = () => {
             <div className='row px-2 vh-100'> 
                 <div className='forum_inputs-in'> 
                         <p className='welcome'>
-                            WELCOME !
+                            Welcome !
                         </p>
                     {errorMsg && showErrorMsg(errorMsg)} 
                     {loading && <div className='text-center'> {showLoading()}</div> } 
